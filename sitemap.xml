@@ -1,28 +1,160 @@
----
-layout: nil
----
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for post in site.posts %}
+  
   <url>
-    <loc>{{ site.url }}{{ post.url }}</loc>
-    {% if post.lastmod == null %}
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-    {% else %}
-    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-    {% endif %}
+    <loc>http://jeremyguan.com/web%20service/2011/09/14/soap-vs-rest/</loc>
+    
+    <lastmod>2011-09-14T21:41:06+10:00</lastmod>
+    
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  {% endfor %}
-  {% for page in site.pages %}
-  {% if page.sitemap != null and page.sitemap != empty %}
+  
   <url>
-    <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ page.sitemap.lastmod | date_to_xmlschema }}</lastmod>
-    <changefreq>{{ page.sitemap.changefreq }}</changefreq>
-    <priority>{{ page.sitemap.priority }}</priority>
+    <loc>http://jeremyguan.com/ruby/2011/08/25/ruby-symbols/</loc>
+    
+    <lastmod>2011-08-25T23:36:04+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
-  {% endif %}
-  {% endfor %}
+  
+  <url>
+    <loc>http://jeremyguan.com/mysql/2011/08/08/how-to-fix-got-a-packet-bigger-than-max_allowed_packet-bytes-mysql-error/</loc>
+    
+    <lastmod>2011-08-08T19:54:20+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/perl/2011/07/24/examples-of-perl-progress-bar/</loc>
+    
+    <lastmod>2011-07-24T23:36:21+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/javascript/2011/07/21/simplest-cross-browser-console-log-caller/</loc>
+    
+    <lastmod>2011-07-21T21:41:33+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/vim/2011/07/07/convert-csv-to-sql-insert-query/</loc>
+    
+    <lastmod>2011-07-07T00:04:11+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/sql/2011/07/05/excluding-null-values-when-using-NOT-IN/</loc>
+    
+    <lastmod>2011-07-05T22:20:13+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/google/2011/07/04/google-search-basics/</loc>
+    
+    <lastmod>2011-07-04T22:43:17+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/browser/2011/06/26/firefox-4.0%2B-has-performance-problem-with-background-size-property/</loc>
+    
+    <lastmod>2011-06-26T00:00:05+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/linux/2011/06/24/how-to-change-the-target-of-a-symbolic-link-in-linux/</loc>
+    
+    <lastmod>2011-06-24T20:14:36+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/vcs/2011/06/24/stop-git-tracking-your-files/</loc>
+    
+    <lastmod>2011-06-24T00:04:47+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/vcs/2011/06/20/revert-committed-change-in-subversion/</loc>
+    
+    <lastmod>2011-06-20T20:37:31+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jeremyguan.com/markdown/2011/06/16/markdown-syntax-quick-reference/</loc>
+    
+    <lastmod>2011-06-16T20:40:45+10:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://jeremyguan.com/about/</loc>
+    <lastmod>2011-06-16T21:16:00+10:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <url>
+    <loc>http://jeremyguan.com/resume/</loc>
+    <lastmod>2011-06-16T21:16:00+10:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </urlset>
