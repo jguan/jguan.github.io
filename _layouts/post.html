@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<article>
+	<header>
+		<span class="date"><time pubdate="" datetime="">{{ page.date | date:"%B %d, %Y" }}</time></span>
+		<h2><a href="{{ page.url }}" rel="bookmark" title="Permanent Link to {{ page.title }}">{{ page.title }}</a></h2>
+	</header>
+    {{ content }}
+	<footer>
+		Posted by {{ site.author }} at {{ page.date | date:"%I:%M %p" }} 
+		{% if page.categories %}
+		| category:
+			{% for cat in page.categories %}
+			<a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
+			{% endfor %}
+		{% endif %}
+		{% if page.tags %}
+		| tags:
+			{% for tag in page.tags %}
+			<a href="{{ site.url }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
+			{% endfor %}
+		{% endif %}
+		{% if site.disqus_enabled %}
+		| <a href="{{ page.url }}#disqus_thread">View Comments</a>
+		{% endif %}
+		| <a href="{{ page.url }}">Permalink &#8734;</a>
+	</footer>
+</article>
+{% if site.disqus_enabled %}
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jeremyguan'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endif %}
+    

@@ -1,1 +1,41 @@
-hello!
+---
+layout: default
+---
+{% for page in paginator.posts %}
+<article>
+	<header>
+		<span class="date"><time pubdate="" datetime="">{{ page.date | date:"%B %d, %Y" }}</time></span>
+		<h2><a href="{{ page.url }}" rel="bookmark" title="Permanent Link to {{ page.title }}">{{ page.title }}</a></h2>
+	</header>
+    {{ page.content }}
+	<footer>
+		Posted by {{ site.author }} at {{ page.date | date:"%I:%M %p" }} 
+		{% if page.categories %}
+		| category:
+			{% for cat in page.categories %}
+			<a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
+			{% endfor %}
+		{% endif %}
+		{% if page.tags %}
+		| tags:
+			{% for tag in page.tags %}
+			<a href="/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
+			{% endfor %}
+		{% endif %}
+		{% if site.disqus_enabled %}
+		| <a href="{{ page.url }}#disqus_thread">View Comments</a>
+		{% endif %}
+		| <a href="{{ page.url }}">Permalink &#8734;</a>
+	</footer>
+</article>
+{% endfor %}
+{% if paginator.previous_page %}
+  	{% if paginator.page == 2 %}
+  		<a href="/" rel="bookmark">« Previous Page</a>
+  	{% else %}
+  		<a href="/page{{ paginator.previous_page }}">« Previous Page</a>
+  	{% endif %}
+{% endif %}
+{% if paginator.next_page %}
+	<a href="/page{{ paginator.next_page }}" style="float:right">Next Page »</a>
+{% endif %}

@@ -1,11 +1,15 @@
-auto: true
-
 markdown: rdiscount
-pygments: true
-paginate: 8
-permalink: /:title
+permalink: pretty
+paginate: 5
 
-title: JeremyGuan.com
+title: Jeremy Guan
 url: http://jeremyguan.com
-feed: /atom.xml
-author_info: <a href="http://jeremyguan.com/">JeremyGuan</a>
+atom: /atom.xml
+rss: /rss.xml
+author: Jeremy Guan
+email: jeremy.guan@gmail.com
+
+disqus_enabled: true
+disqus_name: jeremyguan
+
+excerpt_separator: ""
