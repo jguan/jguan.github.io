@@ -1,0 +1,1002 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jeremy Guan</title>
+    <link>http://jeremyguan.com</link>
+    <atom:link href="http://jeremyguan.comrss.xml" rel="self" type="application/rss+xml" />
+    <description>notes &amp; thoughts on web development</description>
+    <language>en-us</language>
+    <pubDate>Mon, 09 Dec 2013 21:52:54 +1100</pubDate>
+    <lastBuildDate>Mon, 09 Dec 2013 21:52:54 +1100</lastBuildDate>
+
+    
+    <item>
+      <title>SOAP vs REST</title>
+      <link>http://jeremyguan.com/web%20service/2011/09/14/soap-vs-rest/</link>
+      <pubDate>Wed, 14 Sep 2011 21:41:06 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/web%20service/2011/09/14/soap-vs-rest</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Web service&lt;/strong&gt; is a software system designed to support interoperable machine-to-machine interaction over a network.
+&lt;strong&gt;SOAP&lt;/strong&gt; (Simple Object Access Protocol) and &lt;strong&gt;REST&lt;/strong&gt; (Representational State Transfer) are two popular approaches to
+implement web services. Before we compare the difference between them, let&#39;s start from their definitions.&lt;/p&gt;
+
+&lt;h3&gt;What&#39;s SOAP&lt;/h3&gt;
+
+&lt;p&gt;SOAP is a protocol specification for exchanging structured information in the implementation of Web Services in computer networks.
+It relies on Extensible Markup Language (XML) for its message format, and usually relies on other Application Layer protocols,
+most notably Remote Procedure Call (RPC) and Hypertext Transfer Protocol (HTTP), for message negotiation and transmission.
+SOAP can form the foundation layer of a web services protocol stack, providing a basic messaging framework upon which web services can be built.&lt;/p&gt;
+
+&lt;h3&gt;What&#39;s REST&lt;/h3&gt;
+
+&lt;p&gt;REST is a style of software architecture for distributed hypermedia systems such as the World Wide Web.
+A RESTful web service (also called a RESTful web API) is a simple web service implemented using HTTP and the principles of REST.
+It is a collection of resources, with three defined aspects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the base URI for the web service, such as http://example.com/resources/&lt;/li&gt;
+&lt;li&gt;the Internet media type of the data supported by the web service. This is often JSON, XML or YAML but can be any other valid Internet media type.&lt;/li&gt;
+&lt;li&gt;the set of operations supported by the web service using HTTP methods (e.g., POST, GET, PUT or DELETE).&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;SOAP vs REST&lt;/h3&gt;
+
+&lt;p&gt;Here we go. Let&#39;s see their difference now. Unlike SOAP-based web services, there is no &quot;official&quot; standard for RESTful web services.
+This is because according to the definitions, REST is an architecture, unlike SOAP, which is a protocol.
+REST is an architectural style of large-scale networked software that takes advantage of the technologies and protocols of the World Wide Web.
+REST describes how distributed data objects, or resources, can be defined and addressed, stressing the easy exchange of information and scalability.
+Even though REST is not a standard, a RESTful implementation such as the Web can use standards like HTTP, URI, XML, etc.&lt;/p&gt;
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Web_service&quot;&gt;http://en.wikipedia.org/wiki/Web_service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/SOAP&quot;&gt;http://en.wikipedia.org/wiki/SOAP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Representational_state_transfer&quot;&gt;http://en.wikipedia.org/wiki/Representational_state_transfer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>A Perl programmer's understanding of Ruby symbol</title>
+      <link>http://jeremyguan.com/ruby/2011/08/25/ruby-symbols/</link>
+      <pubDate>Thu, 25 Aug 2011 23:36:04 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/ruby/2011/08/25/ruby-symbols</guid>
+      <description>&lt;p&gt;Symbol is special data structure in Ruby and used widely in Rails.
+As a Perl programmer and Ruby/Rails learner, this new concept made me feel confused quite a while. So let&#39;s sort it out now.&lt;/p&gt;
+
+&lt;h3&gt;What is Symbol in Ruby&lt;/h3&gt;
+
+&lt;p&gt;A symbol looks like a variable name with a prefixed colon, like :action, :items.
+It is the most basic Ruby object you can create. It&#39;s just a name and an internal ID.
+Symbols are useful because a given symbol name refers to the same object throughout a Ruby program.&lt;/p&gt;
+
+&lt;h3&gt;What&#39;s the difference between Symbols and Strings&lt;/h3&gt;
+
+&lt;p&gt;Symbols are more efficient than Strings. Everything in Ruby is object so two strings with the same contents are two different objects,
+but for any given name there is only one Symbol object. This can save both time and memory.&lt;/p&gt;
+
+&lt;h3&gt;Using Symbols as Hash Keys&lt;/h3&gt;
+
+&lt;p&gt;Due to the advantage of Symbols, it&#39;s a good idea to use Symbols instead of Strings as hash keys in Ruby.
+The following 2 examples are using Strings and Symbols as hash keys respectively.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;user1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Jeremy Guan&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;email&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;example@example.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;user2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Jeremy Guan&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;example@example.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://rubylearning.com/satishtalim/ruby_symbols.html&quot;&gt;http://rubylearning.com/satishtalim/ruby_symbols.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ruby.railstutorial.org/chapters/rails-flavored-ruby#sec:hashes_and_symbols&quot;&gt;http://ruby.railstutorial.org/chapters/rails-flavored-ruby#sec:hashes_and_symbols&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>How to Fix 'Got a packet bigger than max_allowed_packet bytes' MySQL Error</title>
+      <link>http://jeremyguan.com/mysql/2011/08/08/how-to-fix-got-a-packet-bigger-than-max_allowed_packet-bytes-mysql-error/</link>
+      <pubDate>Mon, 08 Aug 2011 19:54:20 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/mysql/2011/08/08/how-to-fix-got-a-packet-bigger-than-max_allowed_packet-bytes-mysql-error</guid>
+      <description>&lt;p&gt;When I tried to import data from a dump file into a new MySQL database,
+I got &quot;Got a packet bigger than &#39;max_allowed_packet&#39; bytes&quot; error.
+Apparently &#39;max_allowed_packet&#39; needs to be increased
+and I don&#39;t have the change permanently. To fix that, just run
+the following commands in MySQL console:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;net_buffer_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9999999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_allowed_packet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9999999999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Or replace the values with some very large numbers work for you. Don&#39;t quit the MySQL console yet and run the importing command on another terminal.
+The problem should be gone now.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Examples of Perl progress bar</title>
+      <link>http://jeremyguan.com/perl/2011/07/24/examples-of-perl-progress-bar/</link>
+      <pubDate>Sun, 24 Jul 2011 23:36:21 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/perl/2011/07/24/examples-of-perl-progress-bar</guid>
+      <description>
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;perl&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;warnings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;vg&quot;&gt;$|&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 1. dots&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot; Complete!\n&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# output: &amp;quot; .......... Complete!&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 2. simple percentage&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$percent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\r $percent %&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+&lt;span class=&quot;c1&quot;&gt;# output: &amp;quot; 100 %&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 3. spinning bar&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;@progress_symbol&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;\\&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;|&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\r $progress_symbol[$n] $i %&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;undef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;undef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;undef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# output: &amp;quot; / 100 %&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 4. dynamic progress indicator &lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;proc_bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;undef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;undef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;undef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;sub &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;proc_bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$|&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\r\033[36m[\033[33m&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;\033[36m]&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%2.1f%%\033[0m&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$|&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# output: &amp;quot;[||||||||||||||||||||||||||||||||||||||||||||||||||]100.0%&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Simplest cross-browser console.log() caller</title>
+      <link>http://jeremyguan.com/javascript/2011/07/21/simplest-cross-browser-console-log-caller/</link>
+      <pubDate>Thu, 21 Jul 2011 21:41:33 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/javascript/2011/07/21/simplest-cross-browser-console-log-caller</guid>
+      <description>&lt;p&gt;Simply embed this function into global JS file and call &lt;code&gt;log(argument)&lt;/code&gt; to print variable in the console.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// comment this out to enable debugging&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To get more powerful &lt;code&gt;log()&lt;/code&gt;, please check &lt;a href=&quot;http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/&quot;&gt;Paul&#39;s blog&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Convert CSV to SQL insert query</title>
+      <link>http://jeremyguan.com/vim/2011/07/07/convert-csv-to-sql-insert-query/</link>
+      <pubDate>Thu, 07 Jul 2011 00:04:11 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/vim/2011/07/07/convert-csv-to-sql-insert-query</guid>
+      <description>&lt;p&gt;Recently I need to import data from CSV files into databases frequently. This post just records the process of conversion I&#39;m using in Vim.&lt;/p&gt;
+
+&lt;p&gt;Assuming the CSV file is:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;1, A , a
+1, B , b
+1, C , c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On each line, clean up all the spaces preceding and following the commas &quot;,&quot;.&lt;br/&gt;
+&lt;code&gt;:%s/\s*,\s*/,/g&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Replace the beginning of each line by &quot;(&quot;.&lt;br/&gt;
+&lt;code&gt;:%s/^/(&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Replace the end of each line by &quot;)&quot;.&lt;br/&gt;
+&lt;code&gt;:%s/$/),&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Add double quotes (&quot;) to text fields.&lt;br/&gt;
+&lt;code&gt;:%s/\(.*\),\(.*\),\(.*\)/\1,&quot;\2&quot;,&quot;\3&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Or we can combine last three steps into one command.&lt;br/&gt;
+&lt;code&gt;:%s/\(.*\),\(.*\),\(.*\)/(\1,&quot;\2&quot;,&quot;\3&quot;),&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;At last, complete the &lt;code&gt;INSERT&lt;/code&gt; statement and don&#39;t forget to replace the last comma with semicolon &quot;;&quot;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table_name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;A&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;B&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;C&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;quot;c&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Excluding NULL values when using NOT IN operator</title>
+      <link>http://jeremyguan.com/sql/2011/07/05/excluding-null-values-when-using-NOT-IN/</link>
+      <pubDate>Tue, 05 Jul 2011 22:20:13 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/sql/2011/07/05/excluding-null-values-when-using-NOT-IN</guid>
+      <description>&lt;p&gt;Let&#39;s see an example retrieving the elements exist in Table &lt;em&gt;A&lt;/em&gt; but not in Table &lt;em&gt;B&lt;/em&gt; first.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;c1&quot;&gt;-- Input&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- Output&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Bing&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Google&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Yahoo&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- Input&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- Output&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;   
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Bing&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;Yahoo&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- Input&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- Output&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Google&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;----------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-----------------------------------&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the last query, if you remove &lt;em&gt;&quot;where name is not null&quot;&lt;/em&gt; clause, you won&#39;t get expected result.
+The reason is when comparing &quot;Google&quot; in Table &lt;em&gt;A&lt;/em&gt; with Table &lt;em&gt;B&lt;/em&gt;, the logic is equivalent to:&lt;br/&gt;
+&lt;em&gt;&quot;Google&quot; &amp;lt;&gt; &quot;Bing&quot; (TRUE) and &quot;Google&quot; &amp;lt;&gt; &quot;Yahoo&quot; (TRUE) and &quot;Google&quot; &amp;lt;&gt; null (UNKNOWN)&lt;/em&gt;&lt;br/&gt;
+This leads to &lt;em&gt;UNKNOWN&lt;/em&gt; finally in &lt;code&gt;WHERE&lt;/code&gt; clause so nothing will return. In a word, just remember to
+exclude &lt;strong&gt;NULL&lt;/strong&gt; values when using &lt;code&gt;NOT IN&lt;/code&gt; in &lt;code&gt;WHERE&lt;/code&gt; clause.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Search Basics</title>
+      <link>http://jeremyguan.com/google/2011/07/04/google-search-basics/</link>
+      <pubDate>Mon, 04 Jul 2011 22:43:17 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/google/2011/07/04/google-search-basics</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&quot;Keep it simple&quot;&lt;/strong&gt; is the general principle for Google search. That is to say, thinking of the words are most likely to appear on the page
+you are looking for, then choose the best descriptive words and keep them as few as possible. Also, the following basic rules you should keep in mind as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;* square brackets [ ] to signal a search query in the examples below&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Generally all the words you put in the query will be used except the words are commonly used, like &#39;the,&#39; &#39;a,&#39; and &#39;for,&#39;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Search is always &lt;strong&gt;case insensitive&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Generally punctuation and other special characters are ignored but some &lt;strong&gt;exceptions&lt;/strong&gt; may apply.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Punctuation in popular terms that have particular meanings is &lt;em&gt;not ignored&lt;/em&gt;.&lt;br /&gt;
+Example: [ C++ ] [ C# ]&lt;/li&gt;
+&lt;li&gt;The dollar sign ($) used to indicate prices is &lt;em&gt;not ignored&lt;/em&gt;.&lt;br /&gt;
+Example: [ nikon $400 ]&lt;/li&gt;
+&lt;li&gt;The hyphen - and underscore symbol _ used to connect two words are &lt;em&gt;not ignored&lt;/em&gt;.&lt;br /&gt;
+Example: [ quick-sort ] [ quick_sort ]&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;By putting double quotes &lt;strong&gt;(&quot;&quot;)&lt;/strong&gt; around a set of words, the exact words in that exact order are used in the search.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Search could be within a specific website &lt;strong&gt;(site:)&lt;/strong&gt;.&lt;br/&gt;
+Example: [ iraq site:nytimes.com ] [ iraq site:.gov ]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Attaching a minus sign &lt;strong&gt;(-)&lt;/strong&gt; immediately before a word indicates that you want to exclude this word from the results.
+Example: [ anti-virus -software ] [ iraq -site:nytimes.com ]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The wildcard &lt;strong&gt;(*)&lt;/strong&gt; is treated as any unknown term(s) in a search.&lt;br/&gt;
+Example: [ Obama voted * on the * bill ]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Google employs synonyms automatically. To avoid this feature, attaching a &lt;strong&gt;+&lt;/strong&gt; immediately before a word.
+It is the same with putting double quotes &lt;strong&gt;(&quot;&quot;)&lt;/strong&gt; around a single word.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;By default, the &lt;strong&gt;AND&lt;/strong&gt; operator is used among the words. If you want to specify either one of several words, you can use the &lt;strong&gt;OR&lt;/strong&gt; operator.
+(note that you have to type &#39;OR&#39; in ALL CAPS).&lt;br/&gt;
+Example: [ San Francisco Giants 2004 OR 2005 ]&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.com/support/websearch/&quot;&gt;Google Web Search Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Firefox 4.0+ has performance problem with background-size property</title>
+      <link>http://jeremyguan.com/browser/2011/06/26/firefox-4.0%2B-has-performance-problem-with-background-size-property/</link>
+      <pubDate>Sun, 26 Jun 2011 00:00:05 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/browser/2011/06/26/firefox-4.0+-has-performance-problem-with-background-size-property</guid>
+      <description>&lt;p&gt;Firefox starts supporting standard &lt;code&gt;background-size&lt;/code&gt; property since 4.0.
+But unfortunately, it likely doesn&#39;t render this property properly. If you are
+using Firefox 4.0+ or Chrome, you might have noticed the angled striped background
+on my site. The current &lt;code&gt;background-size&lt;/code&gt; is:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you change it to a smaller size with firebug or other tools on your browser,
+you would see the stripes get thinner. It works perfect on Chrome but &lt;strong&gt;DON&#39;T
+do it on Firefox 4.0+&lt;/strong&gt;, as if so it would cause Firefox hanging forever. I
+guess the algorithm Firefox is using to render &lt;code&gt;background-size&lt;/code&gt; needs to be
+optimised for small size.&lt;/p&gt;
+
+&lt;p&gt;I found this problem because my ideal effect of my site is to use very thin stripes
+as background. If you are brave, try this beautiful but dangerous change on my site.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>How to change the target of a symbolic link in Linux</title>
+      <link>http://jeremyguan.com/linux/2011/06/24/how-to-change-the-target-of-a-symbolic-link-in-linux/</link>
+      <pubDate>Fri, 24 Jun 2011 20:14:36 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/linux/2011/06/24/how-to-change-the-target-of-a-symbolic-link-in-linux</guid>
+      <description>&lt;p&gt;The common way is to delete the original symlink then re-create it.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;rm symlink; ln -s target symlink
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you want to do it more conveniently and efficiently, you can &lt;em&gt;force&lt;/em&gt; &lt;code&gt;ln&lt;/code&gt; command to change the target of the soft link without deleting the old one explicitly. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# original symlink&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ln -s /path/to/target old_symlink
+
+&lt;span class=&quot;c&quot;&gt;# change to the new symlink&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ln -fs /path/to/target new_symlink
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linux Man pages&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Stop git tracking your files</title>
+      <link>http://jeremyguan.com/vcs/2011/06/24/stop-git-tracking-your-files/</link>
+      <pubDate>Fri, 24 Jun 2011 00:04:47 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/vcs/2011/06/24/stop-git-tracking-your-files</guid>
+      <description>&lt;p&gt;I&#39;m a new git user. The question came up to me is after I created a git repository with &lt;code&gt;git init&lt;/code&gt;,
+I suddenly changed my mind. That is to say, I don&#39;t want git to track the directories and files in
+this repository but of course I don&#39;t want to lose my work either. git itself don&#39;t have a command
+for this situation but the fix is quit easy actually. As git keeps all of its files in the .git directory,
+what I need to do is just to remove it.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Just make sure you are doing the right thing, because all info from git will lose after doing this.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rm -rf .git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide#320140&quot;&gt;http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide#320140&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Revert committed change in Subversion</title>
+      <link>http://jeremyguan.com/vcs/2011/06/20/revert-committed-change-in-subversion/</link>
+      <pubDate>Mon, 20 Jun 2011 20:37:31 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/vcs/2011/06/20/revert-committed-change-in-subversion</guid>
+      <description>&lt;p&gt;For whatever reason, maybe just committed unexpected change accidentally into SVN repository like me today,
+you want to revert the files to last or any previous version. The best solution is to use &lt;code&gt;svn merge&lt;/code&gt; command.
+For example, you hope to change &quot;world.txt&quot; from current revision 2012 to 2011, you could do:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# be sure you&amp;#39;ve updated&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;svn up
+
+&lt;span class=&quot;c&quot;&gt;# run any of the following equivalent commands&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;svn merge -c -2012 path/to/world.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;svn merge --change -2012 path/to/world.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;svn merge --r 2012:2011 path/to/world.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;svn merge --revision 2012:2011 path/to/world.txt
+
+&lt;span class=&quot;c&quot;&gt;# of course, don&amp;#39;t forget committing the change&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;svn commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;revert change committed in r2012&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The world is safe now.&lt;/p&gt;
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://svnbook.red-bean.com/nightly/en/svn-book.html#svn.branchmerge.basicmerging.undo&quot;&gt;http://svnbook.red-bean.com/nightly/en/svn-book.html#svn.branchmerge.basicmerging.undo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax Quick Reference</title>
+      <link>http://jeremyguan.com/markdown/2011/06/16/markdown-syntax-quick-reference/</link>
+      <pubDate>Thu, 16 Jun 2011 20:40:45 +1000</pubDate>
+      <author>Jeremy Guan</author>
+      <guid>http://jeremyguan.com/markdown/2011/06/16/markdown-syntax-quick-reference</guid>
+      <description>&lt;blockquote&gt;&lt;p&gt;Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz
+allowing people &quot;to write using an easy-to-read, easy-to-write plain text format, then convert
+it to structurally valid XHTML (or HTML)&quot;.&lt;br/&gt;
+- Wikipedia&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;h3&gt;Block elements&lt;/h3&gt;
+
+&lt;h4&gt;Paragraphs and line breaks&lt;/h4&gt;
+
+&lt;p&gt;A paragraph is one or more consecutive lines, separated by blank line.
+To insert a &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;, end a line with two or more spaces.&lt;/p&gt;
+
+&lt;h4&gt;Headers&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Setext-style&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;This is an H1
+=============
+This is an H2
+-------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;This is an H1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;This is an H2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Atx-style&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;# This is an H1
+## This is an H2
+### This is an H3
+#### This is an H4
+##### This is an H5
+###### This is an H6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;This is an H1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;This is an H2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;This is an H3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&amp;gt;&lt;/span&gt;This is an H4&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h5&amp;gt;&lt;/span&gt;This is an H5&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h5&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h6&amp;gt;&lt;/span&gt;This is an H6&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h6&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Blockquotes&lt;/h4&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;&amp;gt; ## This is a header.
+&amp;gt; 
+&amp;gt; 1.   This is the first list item.
+&amp;gt; 2.   This is the second list item.
+&amp;gt; 
+&amp;gt; Here&amp;#39;s some example code:
+&amp;gt; 
+&amp;gt;     return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
+&amp;gt;
+&amp;gt; This is the first level of quoting.
+&amp;gt;
+&amp;gt; &amp;gt; This is nested blockquote.
+&amp;gt;
+&amp;gt; Back to the first level.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;This is a header.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;This is the first list item.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;This is the second list item.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Here&amp;#39;s some example code:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is the first level of quoting.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is nested blockquote.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Back to the first level.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Lists&lt;/h4&gt;
+
+&lt;p&gt;Unordered lists use asterisks *, pluses +, or hyphens -&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;*   Red
+*   Green
+*   Blue
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Red&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Green&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Blue&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ordered lists&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;1.  Bird
+2.  McHale
+3.  Parish
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Bird&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;McHale&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Parish&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Code blocks&lt;/h4&gt;
+
+&lt;p&gt;To produce a code block, indent every line of the block by at least 4 spaces or 1 tab.&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;    tell application &amp;quot;Foo&amp;quot;
+        beep
+    end tell
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;tell application &amp;quot;Foo&amp;quot;
+    beep
+end tell
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Horizontal rules&lt;/h4&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;* * *
+***
+*****
+- - -
+__________________________________
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Span elements&lt;/h3&gt;
+
+&lt;h4&gt;Links&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;inline-style&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;This is [an example](http://example.com/ &amp;quot;Title&amp;quot;) inline link.
+
+[This link](http://example.net/) has no title attribute.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Title&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;an example&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; inline link.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://example.net/&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;This link&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; has no title attribute.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;reference-style&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;This is [an example][id] reference-style link.
+[id]: http://example.com/  &amp;quot;Optional Title Here&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Optional Title Here&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;an example&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; reference-style link.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;Visit [Daring Fireball][] for more information.
+[Daring Fireball]: http://daringfireball.net/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Visit &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://daringfireball.net/&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Daring Fireball&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; for more information.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Emphasis&lt;/h4&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&lt;/span&gt;single asterisks&lt;span class=&quot;nt&quot;&gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;&lt;/span&gt;single underscores&lt;span class=&quot;nt&quot;&gt;&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;double asterisks&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;double underscores&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Code&lt;/h4&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;Use the `printf()` function.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Use the &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;printf()&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; function.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Images&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;inline-style&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;![Alt text](/path/to/img.jpg &amp;quot;Optional title&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/path/to/img.jpg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Alt text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Optional title&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;reference-style&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;![Alt text](/path/to/img.jpg)
+
+![Alt text](/path/to/img.jpg &amp;quot;Optional title&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/path/to/img.jpg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Alt text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/path/to/img.jpg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Alt text&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Optional title&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Miscellaneous&lt;/h3&gt;
+
+&lt;h4&gt;Automatic links&lt;/h4&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;&amp;lt;http://example.com/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;http://example.com/&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Backslash escapes&lt;/h4&gt;
+
+&lt;p class=&quot;nomargin&quot;&gt;The following characters could be escaped:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;Markdown:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;\*literal asterisks\*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;p class=&quot;nomargin&quot;&gt;HTML:&lt;/p&gt;
+
+
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;*literal asterisks*&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax/&quot;&gt;Daring Fireball: Markdown Syntax Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
+
+  </channel> 
+</rss>

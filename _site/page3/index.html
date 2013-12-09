@@ -1,0 +1,729 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="Jeremy's notes & thoughts on web development">
+	<meta name="author" content="Jeremy Guan">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+	<title>Jeremy Guan</title>
+	<link rel="alternate" type="application/rss+xml" title="Recent Posts(RSS 2.0)" href="/rss.xml" />
+	<link rel="alternate" type="application/atom+xml" title="Recent Posts(Atom)" href="/atom.xml" />
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<script src="/js/libs/modernizr-2.0.min.js"></script>
+	<script src="/js/libs/respond.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<header id="site-header"> 
+		<hgroup>
+			<h1 id="site-logo"><a href="/">Jeremy Guan</a></h1> 
+			<h2 id="site-description">notes & thoughts <br / >on web development</h2> 
+		</hgroup>
+		<nav id="site-nav">
+			<ul>
+				<li><a href="/">BLOG</a></li>
+				<li><a href="/about">ABOUT</a></li>
+				<li><a href="/albums">ALBUMS</a></li>
+				<li><a href="/resume">RESUME</a></li>
+				<li><a href="/portfolio">PORTFOLIO</a></li>
+			</ul>
+		</nav>
+		<form id="searchform" method="get" action="http://www.google.com/search">
+			<input type="hidden" name="ie" value="UTF-8">
+			<input type="hidden" name="oe" value="UTF-8">
+			<input type="hidden" name="domains" value="http://jeremyguan.com">
+			<input type="hidden" name="sitesearch" value="http://jeremyguan.com">
+			<input name="q" id="q" type="text" placeholder="Search" value="Search">
+		</form>
+		<div id="social-links">
+			<a href="/rss.xml">RSS</a> | 
+			<a href="/atom.xml">Atom</a><br />
+			<a target="_blank" href="http://twitter.com/#!/sg316">Twitter</a> &middot; 
+			<a target="_blank" href="http://www.facebook.com/songyuan.guan">Facebook</a><br /> 
+			<a target="_blank" href="http://www.linkedin.com/in/jeremyguan">Linkedin</a> &middot;   
+			<a target="_blank" href="http://www.delicious.com/sg316">Delicious</a><br />
+			<a target="_blank" href="https://github.com/jguan">GitHub</a> &middot;  
+			<a target="_blank" href="http://www.douban.com/people/jeremyguan/">Douban</a> &middot; 
+			<a target="_blank" href="http://live.xbox.com/en-AU/member/sg316">Xbox Live</a> 
+		</div>
+		</header><!-- /#site-header -->
+		<div id="content">
+			
+<article>
+	<header>
+		<span class="date"><time pubdate="" datetime="">June 24, 2011</time></span>
+		<h2><a href="/vcs/2011/06/24/stop-git-tracking-your-files/" rel="bookmark" title="Permanent Link to Stop git tracking your files">Stop git tracking your files</a></h2>
+	</header>
+    <p>I'm a new git user. The question came up to me is after I created a git repository with <code>git init</code>,
+I suddenly changed my mind. That is to say, I don't want git to track the directories and files in
+this repository but of course I don't want to lose my work either. git itself don't have a command
+for this situation but the fix is quit easy actually. As git keeps all of its files in the .git directory,
+what I need to do is just to remove it.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Just make sure you are doing the right thing, because all info from git will lose after doing this.</span>
+<span class="nv">$ </span>rm -rf .git
+</code></pre></div>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide#320140">http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide#320140</a></li>
+</ul>
+
+
+	<footer>
+		Posted by Jeremy Guan at 12:04 AM 
+		
+		| category:
+			
+			<a href="/categories/#vcs" title="vcs">vcs</a>&nbsp;
+			
+		
+		
+		| tags:
+			
+			<a href="/tags/#git" title="git">git</a>&nbsp;
+			
+		
+		
+		| <a href="/vcs/2011/06/24/stop-git-tracking-your-files/#disqus_thread">View Comments</a>
+		
+		| <a href="/vcs/2011/06/24/stop-git-tracking-your-files/">Permalink &#8734;</a>
+	</footer>
+</article>
+
+<article>
+	<header>
+		<span class="date"><time pubdate="" datetime="">June 20, 2011</time></span>
+		<h2><a href="/vcs/2011/06/20/revert-committed-change-in-subversion/" rel="bookmark" title="Permanent Link to Revert committed change in Subversion">Revert committed change in Subversion</a></h2>
+	</header>
+    <p>For whatever reason, maybe just committed unexpected change accidentally into SVN repository like me today,
+you want to revert the files to last or any previous version. The best solution is to use <code>svn merge</code> command.
+For example, you hope to change "world.txt" from current revision 2012 to 2011, you could do:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># be sure you&#39;ve updated</span>
+<span class="nv">$ </span>svn up
+
+<span class="c"># run any of the following equivalent commands</span>
+<span class="nv">$ </span>svn merge -c -2012 path/to/world.txt
+<span class="nv">$ </span>svn merge --change -2012 path/to/world.txt
+<span class="nv">$ </span>svn merge --r 2012:2011 path/to/world.txt
+<span class="nv">$ </span>svn merge --revision 2012:2011 path/to/world.txt
+
+<span class="c"># of course, don&#39;t forget committing the change</span>
+<span class="nv">$ </span>svn commit -m <span class="s2">&quot;revert change committed in r2012&quot;</span>
+</code></pre></div>
+
+
+<p>The world is safe now.</p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://svnbook.red-bean.com/nightly/en/svn-book.html#svn.branchmerge.basicmerging.undo">http://svnbook.red-bean.com/nightly/en/svn-book.html#svn.branchmerge.basicmerging.undo</a></li>
+</ul>
+
+
+	<footer>
+		Posted by Jeremy Guan at 08:37 PM 
+		
+		| category:
+			
+			<a href="/categories/#vcs" title="vcs">vcs</a>&nbsp;
+			
+		
+		
+		| tags:
+			
+			<a href="/tags/#svn" title="svn">svn</a>&nbsp;
+			
+		
+		
+		| <a href="/vcs/2011/06/20/revert-committed-change-in-subversion/#disqus_thread">View Comments</a>
+		
+		| <a href="/vcs/2011/06/20/revert-committed-change-in-subversion/">Permalink &#8734;</a>
+	</footer>
+</article>
+
+<article>
+	<header>
+		<span class="date"><time pubdate="" datetime="">June 16, 2011</time></span>
+		<h2><a href="/markdown/2011/06/16/markdown-syntax-quick-reference/" rel="bookmark" title="Permanent Link to Markdown Syntax Quick Reference">Markdown Syntax Quick Reference</a></h2>
+	</header>
+    <blockquote><p>Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz
+allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert
+it to structurally valid XHTML (or HTML)".<br/>
+- Wikipedia</p></blockquote>
+
+<h3>Block elements</h3>
+
+<h4>Paragraphs and line breaks</h4>
+
+<p>A paragraph is one or more consecutive lines, separated by blank line.
+To insert a <code>&lt;br /&gt;</code>, end a line with two or more spaces.</p>
+
+<h4>Headers</h4>
+
+<p><em>Setext-style</em></p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">This is an H1
+=============
+This is an H2
+-------------
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;h1&gt;</span>This is an H1<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>This is an H2<span class="nt">&lt;/h2&gt;</span>
+</code></pre></div>
+
+
+<p><em>Atx-style</em></p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text"># This is an H1
+## This is an H2
+### This is an H3
+#### This is an H4
+##### This is an H5
+###### This is an H6
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;h1&gt;</span>This is an H1<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>This is an H2<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;h3&gt;</span>This is an H3<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;h4&gt;</span>This is an H4<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;h5&gt;</span>This is an H5<span class="nt">&lt;/h5&gt;</span>
+<span class="nt">&lt;h6&gt;</span>This is an H6<span class="nt">&lt;/h6&gt;</span>
+</code></pre></div>
+
+
+<h4>Blockquotes</h4>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">&gt; ## This is a header.
+&gt; 
+&gt; 1.   This is the first list item.
+&gt; 2.   This is the second list item.
+&gt; 
+&gt; Here&#39;s some example code:
+&gt; 
+&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
+&gt;
+&gt; This is the first level of quoting.
+&gt;
+&gt; &gt; This is nested blockquote.
+&gt;
+&gt; Back to the first level.
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;blockquote&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>This is a header.<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>This is the first list item.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>This is the second list item.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>Here&#39;s some example code:<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;pre&gt;&lt;code&gt;</span>return shell_exec(&quot;echo $input | $markdown_script&quot;);
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="nt">&lt;p&gt;</span>This is the first level of quoting.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;blockquote&gt;</span>
+  <span class="nt">&lt;p&gt;</span>This is nested blockquote.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+<span class="nt">&lt;p&gt;</span>Back to the first level.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+</code></pre></div>
+
+
+<h4>Lists</h4>
+
+<p>Unordered lists use asterisks *, pluses +, or hyphens -</p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">*   Red
+*   Green
+*   Blue
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul&gt;</span>
+<span class="nt">&lt;li&gt;</span>Red<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>Green<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>Blue<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div>
+
+
+<p>Ordered lists</p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">1.  Bird
+2.  McHale
+3.  Parish
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>Bird<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>McHale<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>Parish<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+</code></pre></div>
+
+
+<h4>Code blocks</h4>
+
+<p>To produce a code block, indent every line of the block by at least 4 spaces or 1 tab.</p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">    tell application &quot;Foo&quot;
+        beep
+    end tell
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;pre&gt;&lt;code&gt;</span>tell application &quot;Foo&quot;
+    beep
+end tell
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</code></pre></div>
+
+
+<h4>Horizontal rules</h4>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">* * *
+***
+*****
+- - -
+__________________________________
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+
+<h3>Span elements</h3>
+
+<h4>Links</h4>
+
+<p><em>inline-style</em></p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">This is [an example](http://example.com/ &quot;Title&quot;) inline link.
+
+[This link](http://example.net/) has no title attribute.
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>This is <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.com/&quot;</span> <span class="na">title=</span><span class="s">&quot;Title&quot;</span><span class="nt">&gt;</span>an example<span class="nt">&lt;/a&gt;</span> inline link.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.net/&quot;</span><span class="nt">&gt;</span>This link<span class="nt">&lt;/a&gt;</span> has no title attribute.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<p><em>reference-style</em></p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">This is [an example][id] reference-style link.
+[id]: http://example.com/  &quot;Optional Title Here&quot;
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>This is <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.com/&quot;</span> <span class="na">title=</span><span class="s">&quot;Optional Title Here&quot;</span><span class="nt">&gt;</span>an example<span class="nt">&lt;/a&gt;</span> reference-style link.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+
+
+
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html">Visit [Daring Fireball][] for more information.
+[Daring Fireball]: http://daringfireball.net/
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>Visit <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://daringfireball.net/&quot;</span><span class="nt">&gt;</span>Daring Fireball<span class="nt">&lt;/a&gt;</span> for more information.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<h4>Emphasis</h4>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;&lt;em&gt;</span>single asterisks<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;&lt;em&gt;</span>single underscores<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;&lt;strong&gt;</span>double asterisks<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;&lt;strong&gt;</span>double underscores<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<h4>Code</h4>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">Use the `printf()` function.
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>Use the <span class="nt">&lt;code&gt;</span>printf()<span class="nt">&lt;/code&gt;</span> function.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<h4>Images</h4>
+
+<p><em>inline-style</em></p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">![Alt text](/path/to/img.jpg &quot;Optional title&quot;)
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;/path/to/img.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;Alt text&quot;</span> <span class="na">title=</span><span class="s">&quot;Optional title&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<p><em>reference-style</em></p>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">![Alt text](/path/to/img.jpg)
+
+![Alt text](/path/to/img.jpg &quot;Optional title&quot;)
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;/path/to/img.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;Alt text&quot;</span> <span class="na">title=</span><span class="s">&quot;&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;/path/to/img.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;Alt text&quot;</span> <span class="na">title=</span><span class="s">&quot;Optional title&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<h3>Miscellaneous</h3>
+
+<h4>Automatic links</h4>
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">&lt;http://example.com/&gt;
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.com/&quot;</span><span class="nt">&gt;</span>http://example.com/<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<h4>Backslash escapes</h4>
+
+<p class="nomargin">The following characters could be escaped:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+</code></pre></div>
+
+
+
+
+<p class="nomargin">Markdown:</p>
+
+
+
+
+<div class="highlight"><pre><code class="text">\*literal asterisks\*
+</code></pre></div>
+
+
+
+
+<p class="nomargin">HTML:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>*literal asterisks*<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://daringfireball.net/projects/markdown/syntax/">Daring Fireball: Markdown Syntax Documentation</a></li>
+</ul>
+
+
+	<footer>
+		Posted by Jeremy Guan at 08:40 PM 
+		
+		| category:
+			
+			<a href="/categories/#markdown" title="markdown">markdown</a>&nbsp;
+			
+		
+		
+		| tags:
+			
+			<a href="/tags/#markdown" title="markdown">markdown</a>&nbsp;
+			
+		
+		
+		| <a href="/markdown/2011/06/16/markdown-syntax-quick-reference/#disqus_thread">View Comments</a>
+		
+		| <a href="/markdown/2011/06/16/markdown-syntax-quick-reference/">Permalink &#8734;</a>
+	</footer>
+</article>
+
+
+  	
+  		<a href="/page2">« Previous Page</a>
+  	
+
+
+
+		</div><!-- /#content -->
+	</div><!-- /#wrapper -->
+	<footer id="site-footer">
+		<span id="copyright">
+			Copyright &copy; 2011 - 2013 Jeremy Guan. RSS feeds for <a href="/rss.xml">Entries</a>
+			
+				and <a href="http://jeremyguan.disqus.com/latest.rss">Comments</a>.
+			
+		</span>
+		<span id="validation">
+		</span>
+	</footer><!-- /#site-footer -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="/js/plugins.js"></script>
+	<script src="/js/script.js"></script>
+	<script src="/js/jquery.tagcloud.js"></script>
+	<script language="javascript">
+		$.fn.tagcloud.defaults = {
+			size: {start: 1, end: 1, unit: 'em'},
+			color: {start: '#f8e0e6', end: '#ff3333'}
+		};
+
+		$(function () {
+			$('#tag_cloud a').tagcloud();
+		});
+	</script>
+	<script>
+		var _gaq=[['_setAccount','UA-5719292-3'],['_trackPageview'],['_trackPageLoadTime']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+	<!--[if lt IE 7 ]>
+		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+		<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+	<![endif]-->
+	
+	<!-- DISPLAY DISQUS COMMENT COUNT -->
+	 <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jeremyguan'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+	
+  </body>
+</html>
