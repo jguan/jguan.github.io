@@ -2,7 +2,7 @@
 layout: post
 title: Excluding NULL values when using NOT IN operator
 date: 2011/07/05 22:20:13
-category: SQL
+category: Database
 tags: sql
 ---
 Let's see an example retrieving the elements exist in Table *A* but not in Table *B* first.

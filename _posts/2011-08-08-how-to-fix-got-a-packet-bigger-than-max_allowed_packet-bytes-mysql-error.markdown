@@ -2,7 +2,7 @@
 layout: post
 title: How to Fix 'Got a packet bigger than max_allowed_packet bytes' MySQL Error
 date: 2011/08/08 19:54:20
-category: MySQL
+category: Database
 tags: mysql
 ---
 When I tried to import data from a dump file into a new MySQL database, 

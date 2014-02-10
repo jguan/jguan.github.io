@@ -2,7 +2,7 @@
 layout: post
 title: Convert CSV to SQL insert query
 date: 2011/07/07 00:04:11
-category: Vim
+category: Other
 tags: vim
 ---
 Recently I need to import data from CSV files into databases frequently. This post just records the process of conversion I'm using in Vim.

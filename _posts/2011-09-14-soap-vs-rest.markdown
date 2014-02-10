@@ -2,7 +2,7 @@
 layout: post
 title: SOAP vs REST
 date: 2011/09/14 21:41:06
-category: Web service
+category: Other
 tags: [web service, soap, rest]
 ---
 **Web service** is a software system designed to support interoperable machine-to-machine interaction over a network. 

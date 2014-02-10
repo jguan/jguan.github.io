@@ -2,7 +2,7 @@
 layout: post
 title: How to set up an SSH tunnel in PuTTY
 date: 2011-11-14 20:51:36
-category: PuTTY
+category: Other
 tags: putty
 ---
 

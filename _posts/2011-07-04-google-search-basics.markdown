@@ -2,7 +2,7 @@
 layout: post
 title: Google Search Basics
 date: 2011/07/04 22:43:17
-category: Google
+category: Other
 tags: google
 ---
 **"Keep it simple"** is the general principle for Google search. That is to say, thinking of the words are most likely to appear on the page 

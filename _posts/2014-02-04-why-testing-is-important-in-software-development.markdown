@@ -2,7 +2,7 @@
 layout: post
 title: Why testing is important in software development
 date: 2011-12-13 14:45:36
-category: Testing
+category: Other
 tags: testing
 ---
 

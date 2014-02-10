@@ -2,7 +2,7 @@
 layout: post
 title: Markdown Syntax Quick Reference
 date: 2011/06/16 20:40:45
-category: Markdown
+category: Other
 tags: markdown
 ---
 > Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz 
