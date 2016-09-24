@@ -1,9 +1,9 @@
-markdown: rdiscount
+markdown: kramdown
 permalink: pretty
 paginate: 5
 
 title: Jeremy Guan
-url: http://jeremyguan.com
+url: https://jguan.github.io
 atom: /atom.xml
 rss: /rss.xml
 author: Jeremy Guan
